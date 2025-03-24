@@ -1,11 +1,29 @@
+import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/layout/Layout";
+import Dashboard from "./pages/Dashboard";
+import Users from "./pages/Users";
+import Settings from "./pages/Settings";
+import Login from "./pages/Login";
 
 function App() {
   return (
-    <Layout>
-      <h2 className="text-2xl font-semibold">Welcome to Admin Panel</h2>
-      <p className="mt-4">This is the main content area.where we will put our content</p>
-    </Layout>
+    <Routes>
+      {/* Redirect "/" to "/login" */}
+      <Route path="/" element={<Navigate to="/login" />} />
+
+      {/* Login Page Route */}
+      <Route path="/login" element={<Login />} />
+
+      {/* Protected Admin Routes */}
+      <Route path="/admin" element={<Layout />}>
+        <Route index element={<Dashboard />} /> {/* Default content for /admin */}
+        <Route path="users" element={<Users />} />
+        <Route path="settings" element={<Settings />} />
+      </Route>
+
+      {/* Catch all unmatched routes */}
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
   );
 }
 
