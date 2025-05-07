@@ -1,30 +1,48 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import Layout from "./components/layout/Layout";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LoginForm from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Layout from "./components/layout/Layout";
 import Users from "./pages/Users";
 import Settings from "./pages/Settings";
-import Login from "./pages/Login";
+import ProtectedRoute from "./components/customcomponents/ProtectedRoute"; 
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <LoginForm />,
+  },
+  {
+    path: "/login",
+    element: <LoginForm />,
+  },
+  {
+    path: "/admin",
+    element: <ProtectedRoute />, 
+    children: [
+      {
+        path: "", 
+        element: <Layout />,
+        children: [
+          {
+            index: true,
+            element: <Dashboard />,
+          },
+          {
+            path: "users",
+            element: <Users />,
+          },
+          {
+            path: "settings",
+            element: <Settings />,
+          },
+        ],
+      },
+    ],
+  },
+]);
 
 function App() {
-  return (
-    <Routes>
-      {/* Redirect "/" to "/login" */}
-      <Route path="/" element={<Navigate to="/login" />} />
-
-      {/* Login Page Route */}
-      <Route path="/login" element={<Login />} />
-
-      {/* Protected Admin Routes */}
-      <Route path="/admin" element={<Layout />}>
-        <Route index element={<Dashboard />} /> {/* Default content for /admin */}
-        <Route path="users" element={<Users />} />
-        <Route path="settings" element={<Settings />} />
-      </Route>
-
-      {/* Catch all unmatched routes */}
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
-  );
+  return <RouterProvider router={appRouter} />;
 }
 
 export default App;
