@@ -7,6 +7,7 @@ interface FormButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   loading?: boolean;
+  className?: string; 
 }
 
 const FormButton: React.FC<FormButtonProps> = ({
@@ -14,12 +15,13 @@ const FormButton: React.FC<FormButtonProps> = ({
   onClick,
   type = "submit",
   loading = false,
+  className,
 }) => (
   <button
     type={type}
     onClick={onClick}
     disabled={loading}
-    className={`w-full bg-indigo-600 text-white p-3 rounded transition flex items-center justify-center ${
+    className={` ${className}  text-white p-3 rounded transition flex items-center justify-center  ${
       loading ? "opacity-70 cursor-not-allowed" : "hover:bg-indigo-700"
     }`}
   >

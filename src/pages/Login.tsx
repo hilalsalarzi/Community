@@ -81,7 +81,7 @@ const LoginForm: React.FC = () => {
         </div>
 
         {/* Submit Button */}
-        <FormButton text="Login" loading={loading} />
+        <FormButton text="Login" loading={loading} className="w-full bg-indigo-600" />
         <p className="mt-4 text-center text-sm">
           Don't have an account? <Link to="#" className="text-indigo-600">Sign up</Link>
         </p>
