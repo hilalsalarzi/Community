@@ -13,7 +13,7 @@ const Header = () => {
       <header className="bg-gray-800 text-white p-4 shadow-md">
         <div className="flex justify-between">
         <h1 className="text-xl font-bold">Admin Panel</h1>
-      <FormButton text="logout" className="bg-red-500 w-[100px] rounded-full" onClick={logout}  />
+      <FormButton text="logout" className="bg-red-500 w-[100px] rounded-full hover:bg-red-700 cursor-pointer py-2" onClick={logout}  />
       </div>
       </header>
     );

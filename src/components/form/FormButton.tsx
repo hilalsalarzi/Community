@@ -21,9 +21,7 @@ const FormButton: React.FC<FormButtonProps> = ({
     type={type}
     onClick={onClick}
     disabled={loading}
-    className={` ${className}  text-white p-3 rounded transition flex items-center justify-center  ${
-      loading ? "opacity-70 cursor-not-allowed" : "hover:bg-indigo-700"
-    }`}
+    className={` ${className}  `}
   >
     {loading ? <ClipLoader color="#fff" size={20} /> : text}
   </button>

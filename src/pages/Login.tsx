@@ -81,7 +81,9 @@ const LoginForm: React.FC = () => {
         </div>
 
         {/* Submit Button */}
-        <FormButton text="Login" loading={loading} className="w-full bg-indigo-600" />
+        <FormButton text="Login" loading={loading} className={`w-full bg-indigo-600 text-white p-3 rounded transition flex items-center justify-center  ${
+      loading ? "opacity-70 cursor-not-allowed" : "hover:bg-indigo-700"
+    }`} />
         <p className="mt-4 text-center text-sm">
           Don't have an account? <Link to="#" className="text-indigo-600">Sign up</Link>
         </p>

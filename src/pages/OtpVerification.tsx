@@ -66,7 +66,9 @@ const OtpVerification = () => {
             type="text"
              className="w-full pl-10 p-3 border rounded focus:ring focus:ring-indigo-300"
           />
-           <FormButton onClick={onclick} text="Login" loading={loading} className="w-full bg-indigo-600" />
+           <FormButton onClick={onclick} text="Login" loading={loading} className={`w-full bg-indigo-600 text-white p-3 rounded transition flex items-center justify-center  ${
+      loading ? "opacity-70 cursor-not-allowed" : "hover:bg-indigo-700"
+    }`} />
       </div>
     </div>
   );
