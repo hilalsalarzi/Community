@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import LoginForm from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/layout/Layout";
 import Users from "./pages/Users";
@@ -7,15 +6,16 @@ import Settings from "./pages/Settings";
 import ProtectedRoute from "./components/customcomponents/ProtectedRoute"; 
 import NotFound from "./pages/NotFound";
 import OtpVerification from "./pages/OtpVerification";
+import LoginRedirect from "./components/customcomponents/LoginRedirect";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <LoginForm />,
+    element: <LoginRedirect />,
   },
   {
     path: "/login",
-    element: <LoginForm />,
+    element: <LoginRedirect />,
   },
   {
            path: '/verify-otp',
