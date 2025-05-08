@@ -5,6 +5,8 @@ import Layout from "./components/layout/Layout";
 import Users from "./pages/Users";
 import Settings from "./pages/Settings";
 import ProtectedRoute from "./components/customcomponents/ProtectedRoute"; 
+import NotFound from "./pages/NotFound";
+import OtpVerification from "./pages/OtpVerification";
 
 const appRouter = createBrowserRouter([
   {
@@ -15,6 +17,12 @@ const appRouter = createBrowserRouter([
     path: "/login",
     element: <LoginForm />,
   },
+  {
+           path: '/verify-otp',
+           element:<OtpVerification/>
+  },
+
+  // admin routes / protected routes 
   {
     path: "/admin",
     element: <ProtectedRoute />, 
@@ -38,7 +46,10 @@ const appRouter = createBrowserRouter([
         ],
       },
     ],
-  },
+  },{
+    path:'*',
+    element:<NotFound/>
+  }
 ]);
 
 function App() {
